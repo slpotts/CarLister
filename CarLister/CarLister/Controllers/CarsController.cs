@@ -48,7 +48,7 @@ namespace CarLister.Controllers
             return Ok(await db.GetModels(year, makes));
         }
 
-        [HttpGet, HttpPost, Route("getModels")]
+        [HttpGet, HttpPost, Route("getTrims")]
         public async Task<IHttpActionResult> GetTrims(int year, string makes, string modelName)
         {
             return Ok(await db.GetTrims(year, makes, modelName));
