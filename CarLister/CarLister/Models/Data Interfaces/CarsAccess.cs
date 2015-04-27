@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Threading.Tasks;
+using Insight.Database;
 
 namespace CarLister.Models.Data_Interfaces
 {
@@ -12,10 +13,13 @@ namespace CarLister.Models.Data_Interfaces
 
         Task<List<string>> GetMakes(int year);
 
-        Task<List<string>> GetModels(int year, string makes);
+        Task<List<string>> GetModels(int year, string make);
 
-        Task<List<string>> GetTrims(int year, string makes, string modelName);
+        Task<List<string>> GetTrims(int year, string make, string model);
 
-        Task<List<Car>> GetCars(int year, string makes, string modelName, string modelTrim);
+        Task<List<Car>> GetCars(int year, string make, string model, string trim);
+
+        [Sql("Select * from Cars where Id = @Id")]
+        Task<Car> GetCar(int id);
     }
 }
